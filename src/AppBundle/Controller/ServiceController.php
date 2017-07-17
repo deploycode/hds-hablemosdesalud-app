@@ -6,6 +6,7 @@ use AppBundle\Entity\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Utils\Slugger;
 
 /**
  * Service controller.
@@ -37,13 +38,17 @@ class ServiceController extends Controller
      * @Route("/new", name="service_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Slugger $slugger)
     {
         $service = new Service();
         $form = $this->createForm('AppBundle\Form\ServiceType', $service);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $slug = $this->get('AppBundle\Utils\Slugger')->slugify($service->getName());
+            $service->setSlug($slug);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($service);
             $em->flush();
@@ -79,15 +84,18 @@ class ServiceController extends Controller
      * @Route("/{id}/edit", name="service_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Service $service)
+    public function editAction(Request $request, Service $service, Slugger $slugger)
     {
         $deleteForm = $this->createDeleteForm($service);
         $editForm = $this->createForm('AppBundle\Form\ServiceType', $service);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
+            $slug = $this->get('AppBundle\Utils\Slugger')->slugify($service->getName());
+            $service->setSlug($slug);
+
+            $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('service_edit', array('id' => $service->getId()));
         }
 

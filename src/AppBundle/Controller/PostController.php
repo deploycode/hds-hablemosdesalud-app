@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Utils\Slugger;
 
 /**
  * Post controller.
@@ -37,13 +39,17 @@ class PostController extends Controller
      * @Route("/new", name="post_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Slugger $slugger)
     {
         $post = new Post();
         $form = $this->createForm('AppBundle\Form\PostType', $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $slug = $this->get('AppBundle\Utils\Slugger')->slugify($post->getTitle());
+            $post->setSlug($slug);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
@@ -79,15 +85,18 @@ class PostController extends Controller
      * @Route("/{id}/edit", name="post_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Post $post)
+    public function editAction(Request $request, Post $post, Slugger $slugger)
     {
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('AppBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
+            $slug = $this->get('AppBundle\Utils\Slugger')->slugify($post->getTitle());
+            $post->setSlug($slug);
+
+            $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
         }
 

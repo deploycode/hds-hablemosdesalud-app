@@ -6,6 +6,7 @@ use AppBundle\Entity\Menu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Utils\Slugger;
 
 /**
  * Menu controller.
@@ -37,13 +38,17 @@ class MenuController extends Controller
      * @Route("/new", name="menu_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Slugger $slugger)
     {
         $menu = new Menu();
         $form = $this->createForm('AppBundle\Form\MenuType', $menu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $slug = $this->get('AppBundle\Utils\Slugger')->slugify($menu->getName());
+            $menu->setSlug($slug);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($menu);
             $em->flush();
@@ -79,15 +84,18 @@ class MenuController extends Controller
      * @Route("/{id}/edit", name="menu_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Menu $menu)
+    public function editAction(Request $request, Menu $menu, Slugger $slugger)
     {
         $deleteForm = $this->createDeleteForm($menu);
         $editForm = $this->createForm('AppBundle\Form\MenuType', $menu);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
+            $slug = $this->get('AppBundle\Utils\Slugger')->slugify($menu->getName());
+            $menu->setSlug($slug);
+
+            $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('menu_edit', array('id' => $menu->getId()));
         }
 
