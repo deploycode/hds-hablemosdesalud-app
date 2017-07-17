@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="services")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ServiceRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Service
 {
@@ -66,6 +67,24 @@ class Service
     {
       $this->menus = new ArrayCollection();
     }
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtValue()
+    {
+      $this->createdAt=new \DateTime();
+    }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function setUpdatedAtValue()
+    {
+      $this->updatedAt=new \DateTime();
+    }
+
 
     /**
      * Get id

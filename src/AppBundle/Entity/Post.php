@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="posts")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Post
 {
@@ -89,6 +90,22 @@ class Post
      */
     private $updatedAt;
 
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtValue()
+    {
+      $this->createdAt=new \DateTime();
+    }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function setUpdatedAtValue()
+    {
+      $this->updatedAt=new \DateTime();
+    }
 
     /**
      * Get id

@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="menus")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MenuRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Menu
 {
@@ -64,6 +65,23 @@ class Menu
     public function __construct()
     {
       $this->posts = new ArrayCollection();
+    }
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtValue()
+    {
+      $this->createdAt=new \DateTime();
+    }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function setUpdatedAtValue()
+    {
+      $this->updatedAt=new \DateTime();
     }
 
     /**
