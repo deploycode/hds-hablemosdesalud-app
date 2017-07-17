@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Menu
@@ -12,6 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Menu
 {
+    /**
+    * @ORM\OneToMany(targetEntity="Post", mappedBy="menu", cascade={"persist", "remove"})
+    */
+    private $posts;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Service", inversedBy="menus")
+    * @ORM\JoinColumn(name="service_id", referencedColumnName="id")
+    */
+    private $service;
+
     /**
      * @var int
      *
@@ -49,6 +61,10 @@ class Menu
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+      $this->posts = new ArrayCollection();
+    }
 
     /**
      * Get id

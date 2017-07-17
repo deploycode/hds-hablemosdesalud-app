@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+    /**
+    * @ORM\OneToMany(targetEntity="Post", mappedBy="user" , cascade={"persist", "remove"})
+    */
+    private $posts;
+
     /**
      * @var int
      *
@@ -63,6 +69,10 @@ class User
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+      $this->posts = new ArrayCollection();
+    }
 
     /**
      * Get id

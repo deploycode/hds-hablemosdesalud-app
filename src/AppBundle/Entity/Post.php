@@ -12,6 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
+     /**
+     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="posts")
+     * @ORM\JoinColumn(name="menu_id", referencedColumnName="id")
+     */
+     private $menu;
+
+     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+     private $user;
+
     /**
      * @var int
      *
