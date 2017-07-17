@@ -196,4 +196,38 @@ class Service
     {
         return $this->updatedAt;
     }
+
+    /**
+     * Add menu
+     *
+     * @param \AppBundle\Entity\Menu $menu
+     *
+     * @return Service
+     */
+    public function addMenu(\AppBundle\Entity\Menu $menu)
+    {
+        $this->menus[] = $menu;
+
+        return $this;
+    }
+
+    /**
+     * Remove menu
+     *
+     * @param \AppBundle\Entity\Menu $menu
+     */
+    public function removeMenu(\AppBundle\Entity\Menu $menu)
+    {
+        $this->menus->removeElement($menu);
+    }
+
+    /**
+     * Get menus
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMenus()
+    {
+        return $this->menus;
+    }
 }
