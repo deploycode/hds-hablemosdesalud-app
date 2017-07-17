@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -55,6 +56,10 @@ class PostController extends Controller
             $file_name=md5(uniqid()).".".$ext;
             $file->move("uploads", $file_name);
             $post->setImage($file_name);
+
+            $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+            $user = $this->getDoctrine()->getRepository(User::class)->find($userId);
+            $post->setUser($user);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
