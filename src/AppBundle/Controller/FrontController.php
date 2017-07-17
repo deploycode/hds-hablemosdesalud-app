@@ -17,8 +17,16 @@ class FrontController extends Controller
   {
     $em = $this->getDoctrine()->getManager();
     $services = $em->getRepository('AppBundle:Service')->findAll();
+    //El post con el id 1
+    $f_post = $em->getRepository('AppBundle:Post')->findOneById(3);
+    //los 7 más recientes
+    $query = $em->getRepository('AppBundle:Post')->createQueryBuilder('p')
+    ->orderBy('p.updatedAt', 'DESC')
+    ->getQuery();
+    $collage = $query->getResult();
 
-    return $this->render('home.html.twig', array ('services'=>$services));
+
+    return $this->render('home.html.twig', array ('services'=>$services , 'f_post'=>$f_post , 'collage'=>$collage ));
   }
   /**
   *@Route("/servicios/{slug}", name="servicio")

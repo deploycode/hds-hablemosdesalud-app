@@ -2,4 +2,35 @@
   {% for service in services %}
       <li><a href="/servicios/{{service.slug}}">{{service.name}}</a></li>
   {% endfor %}
+  <br><br>
+  <h1>Post favorito</h1>
+  {{f_post.title}}<br><br>
+  <h4>Collage</h4>
+  {% for post in collage %}
+    {% if loop.index < 5 %}
+      {{post.title}}<br>
+    {% endif %}
+  {% endfor %}
+  <h4>Lo más recientes</h4>
+  {% for post in collage %}
+    {% if loop.index < 8 %}
+      {{post.title}}<br>
+      <img src="{{asset('uploads/')}}{{post.image}}" alt="">
+    {% endif %}
+  {% endfor %}
+  <h4>7 por servicio</h4>
+  {% for service in services %}
+  <strong>{{service.name}}</strong> <br>
+    {% for post in collage if post.menu.service.id == service.id %}
+      {% if loop.index < 8 %}
+        {{post.title}}<br>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  <h4>Noticias</h4>
+  {% for post in collage %}
+    {% if loop.index < 8 %}
+      {{post.title}}<br>
+    {% endif %}
+  {% endfor %}
 </body>
