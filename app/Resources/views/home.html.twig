@@ -1,0 +1,5 @@
+<body>
+  {% for service in services %}
+      <li><a href="/servicios/{{service.slug}}">{{service.name}}</a></li>
+  {% endfor %}
+</body>

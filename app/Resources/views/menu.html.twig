@@ -1,0 +1,36 @@
+<body>
+  <h1>Menu</h1>
+
+  <table>
+      <tbody>
+          <tr>
+              <th>Id</th>
+              <td>{{ menu.id }}</td>
+          </tr>
+          <tr>
+              <th>Name</th>
+              <td>{{ menu.name }}</td>
+          </tr>
+          <tr>
+              <th>Slug</th>
+              <td>{{ menu.slug }}</td>
+          </tr>
+          <tr>
+              <th>Createdat</th>
+              <td>{% if menu.createdAt %}{{ menu.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+          </tr>
+          <tr>
+              <th>Updatedat</th>
+              <td>{% if menu.updatedAt %}{{ menu.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+          </tr>
+          <tr>
+            <th>Posts</th>
+            <td>
+              {% for post in menu.posts %}
+                <li><a href="/articulos/{{post.slug}}">{{post.title}}</a></li>
+              {% endfor %}
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</body>
