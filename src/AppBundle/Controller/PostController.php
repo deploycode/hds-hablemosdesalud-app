@@ -50,6 +50,12 @@ class PostController extends Controller
             $slug = $this->get('AppBundle\Utils\Slugger')->slugify($post->getTitle());
             $post->setSlug($slug);
 
+            $file=$form['image']->getData();
+            $ext=$file->guessExtension();
+            $file_name=md5(uniqid()).".".$ext;
+            $file->move("uploads", $file_name);
+            $post->setImage($file_name);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
@@ -87,6 +93,7 @@ class PostController extends Controller
      */
     public function editAction(Request $request, Post $post, Slugger $slugger)
     {
+        $oldImage= $ad->getImage();
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('AppBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
@@ -95,6 +102,18 @@ class PostController extends Controller
 
             $slug = $this->get('AppBundle\Utils\Slugger')->slugify($post->getTitle());
             $post->setSlug($slug);
+
+            if (!empty($editForm['image']->getData()))
+            {
+                unlink('uploads/'.$oldImage);
+                $file=$editForm['image']->getData();
+                $ext=$file->guessExtension();
+                $file_name=md5(uniqid()).".".$ext;
+                $file->move("uploads", $file_name);
+                $post->setImage($file_name);
+            }else{
+                $post->setImage($oldImage);
+            }
 
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
@@ -122,6 +141,9 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($post);
             $em->flush();
+
+            $image=$post->getImage();
+            unlink('uploads/'.$image);
         }
 
         return $this->redirectToRoute('post_index');

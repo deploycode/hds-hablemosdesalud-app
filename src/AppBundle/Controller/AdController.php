@@ -44,6 +44,13 @@ class AdController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file=$form['image']->getData();
+            $ext=$file->guessExtension();
+            $file_name=md5(uniqid()).".".$ext;
+            $file->move("uploads", $file_name);
+            $ad->setImage($file_name);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($ad);
             $em->flush();
@@ -81,13 +88,26 @@ class AdController extends Controller
      */
     public function editAction(Request $request, Ad $ad)
     {
+        $oldImage= $ad->getImage();
         $deleteForm = $this->createDeleteForm($ad);
         $editForm = $this->createForm('AppBundle\Form\AdType', $ad);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
+          if (!empty($editForm['image']->getData()))
+          {
+              unlink('uploads/'.$oldImage);
+              $file=$editForm['image']->getData();
+              $ext=$file->guessExtension();
+              $file_name=md5(uniqid()).".".$ext;
+              $file->move("uploads", $file_name);
+              $ad->setImage($file_name);
+          }else{
+              $ad->setImage($oldImage);
+          }
+
+            $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('ad_edit', array('id' => $ad->getId()));
         }
 
@@ -113,6 +133,10 @@ class AdController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($ad);
             $em->flush();
+
+            $image=$ad->getImage();
+            unlink('uploads/'.$image);
+
         }
 
         return $this->redirectToRoute('ad_index');

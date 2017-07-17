@@ -49,6 +49,12 @@ class ServiceController extends Controller
             $slug = $this->get('AppBundle\Utils\Slugger')->slugify($service->getName());
             $service->setSlug($slug);
 
+            $file=$form['image']->getData();
+            $ext=$file->guessExtension();
+            $file_name=md5(uniqid()).".".$ext;
+            $file->move("uploads", $file_name);
+            $service->setImage($file_name);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($service);
             $em->flush();
@@ -86,6 +92,7 @@ class ServiceController extends Controller
      */
     public function editAction(Request $request, Service $service, Slugger $slugger)
     {
+        $oldImage= $ad->getImage();
         $deleteForm = $this->createDeleteForm($service);
         $editForm = $this->createForm('AppBundle\Form\ServiceType', $service);
         $editForm->handleRequest($request);
@@ -94,6 +101,18 @@ class ServiceController extends Controller
 
             $slug = $this->get('AppBundle\Utils\Slugger')->slugify($service->getName());
             $service->setSlug($slug);
+
+            if (!empty($editForm['image']->getData()))
+            {
+                unlink('uploads/'.$oldImage);
+                $file=$editForm['image']->getData();
+                $ext=$file->guessExtension();
+                $file_name=md5(uniqid()).".".$ext;
+                $file->move("uploads", $file_name);
+                $service->setImage($file_name);
+            }else{
+                $service->setImage($oldImage);
+            }
 
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('service_edit', array('id' => $service->getId()));
@@ -121,6 +140,9 @@ class ServiceController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($service);
             $em->flush();
+
+            $image=$service->getImage();
+            unlink('uploads/'.$image);
         }
 
         return $this->redirectToRoute('service_index');
