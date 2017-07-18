@@ -17,7 +17,7 @@ class ServiceType extends AbstractType
     {
         $builder
         ->add('name', TextType::class ,array ('attr'=>array('class'=>'form-control')) )
-        ->add('image', FileType::class, array('data_class' => null, 'required' => false ) );
+        ->add('image', FileType::class, array('data_class' => null, 'required' => false ,'attr'=>array('class'=>'form-control')) );
     }
 
     /**

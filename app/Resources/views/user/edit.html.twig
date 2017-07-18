@@ -1,21 +1,22 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'layouts/dashboard.html.twig' %}
+{% block title %}User edit{% endblock %}
 {% block body %}
-    <h1>User edit</h1>
-
-    {{ form_start(edit_form) }}
+    <div class="form-group text-right">
+      <a href="{{ path('user_index') }}" class="btn btn-info">Back to the list</a>
+    </div>
+    <div class="form-group">
+      {{ form_start(edit_form) }}
+      <div class="form-group">
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+      </div>
+      <div class="form-group text-right">
+        <input type="submit" value="Edit" class="btn btn-success"/>
+      </div>
+      {{ form_end(edit_form) }}
+    </div>
+    <div class="form-group text-right">
+      {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger">
+      {{ form_end(delete_form) }}
+    </div>
 {% endblock %}

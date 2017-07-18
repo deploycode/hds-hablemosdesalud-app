@@ -59,7 +59,7 @@ class ServiceController extends Controller
             $em->persist($service);
             $em->flush();
 
-            return $this->redirectToRoute('service_show', array('id' => $service->getId()));
+            return $this->redirectToRoute('service');
         }
 
         return $this->render('service/new.html.twig', array(
@@ -92,7 +92,7 @@ class ServiceController extends Controller
      */
     public function editAction(Request $request, Service $service, Slugger $slugger)
     {
-        $oldImage= $ad->getImage();
+        $oldImage= $service->getImage();
         $deleteForm = $this->createDeleteForm($service);
         $editForm = $this->createForm('AppBundle\Form\ServiceType', $service);
         $editForm->handleRequest($request);

@@ -1,16 +1,15 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'layouts/dashboard.html.twig' %}
+{% block title %}Post creation{% endblock %}
 {% block body %}
-    <h1>Post creation</h1>
-
+    <div class="form-group text-right">
+      <a href="{{ path('post_index') }}" class="btn btn-info">Back to the list</a>
+    </div>
     {{ form_start(form , { 'enctype':"multipart/form-data"} ) }}
+      <div class="form-group">
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+      </div>
+      <div class="form-group text-right">
+        <input type="submit" value="Create"class="btn btn-success" />
+      </div>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

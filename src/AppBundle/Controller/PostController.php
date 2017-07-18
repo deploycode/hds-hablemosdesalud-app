@@ -65,7 +65,7 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('articulo', array('slug' => $post->getSlug()));
         }
 
         return $this->render('post/new.html.twig', array(
@@ -98,7 +98,7 @@ class PostController extends Controller
      */
     public function editAction(Request $request, Post $post, Slugger $slugger)
     {
-        $oldImage= $ad->getImage();
+        $oldImage= $post->getImage();
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('AppBundle\Form\PostType', $post);
         $editForm->handleRequest($request);

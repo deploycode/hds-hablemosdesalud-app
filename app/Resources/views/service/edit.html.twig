@@ -1,21 +1,20 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'layouts/dashboard.html.twig' %}
+{% block title %}Service edit{% endblock %}
 {% block body %}
-    <h1>Service edit</h1>
-
+    <div class="form-group text-right">
+        <a href="{{ path('service_index') }}" class="btn btn-info">Back to the list</a>
+    </div>
     {{ form_start(edit_form , { 'enctype':"multipart/form-data"} ) }}
+      <div class="form-group">
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+      </div>
+      <div class="form-group text-right">
+        <input type="submit" value="Edit" class="btn btn-success"/>
+      </div>
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('service_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="form-group text-right">
+      {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger">
+      {{ form_end(delete_form) }}
+    </div>
 {% endblock %}

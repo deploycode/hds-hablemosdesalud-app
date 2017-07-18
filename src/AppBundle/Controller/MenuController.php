@@ -53,7 +53,7 @@ class MenuController extends Controller
             $em->persist($menu);
             $em->flush();
 
-            return $this->redirectToRoute('menu_show', array('id' => $menu->getId()));
+            return $this->redirectToRoute('menu');
         }
 
         return $this->render('menu/new.html.twig', array(

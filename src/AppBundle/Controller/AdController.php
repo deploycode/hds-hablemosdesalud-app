@@ -55,7 +55,7 @@ class AdController extends Controller
             $em->persist($ad);
             $em->flush();
 
-            return $this->redirectToRoute('ad_show', array('id' => $ad->getId()));
+            return $this->redirectToRoute('ad_index');
         }
 
         return $this->render('ad/new.html.twig', array(

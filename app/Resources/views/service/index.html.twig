@@ -1,47 +1,26 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'layouts/dashboard.html.twig' %}
+{% block title %}Services list{% endblock %}
 {% block body %}
-    <h1>Services list</h1>
-
-    <table>
+    <div class="form-group text-right">
+      <a href="{{ path('service_new') }}" class="btn btn-success">Create a new service</a>
+    </div>
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
-                <th>Slug</th>
-                <th>Image</th>
-                <th>Createdat</th>
-                <th>Updatedat</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for service in services %}
             <tr>
-                <td><a href="{{ path('service_show', { 'id': service.id }) }}">{{ service.id }}</a></td>
                 <td>{{ service.name }}</td>
-                <td>{{ service.slug }}</td>
-                <td>{{ service.image }}</td>
-                <td>{% if service.createdAt %}{{ service.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if service.updatedAt %}{{ service.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('service_show', { 'id': service.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('service_edit', { 'id': service.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                  <a href="{{ path('service_show', { 'id': service.id }) }}" class="btn btn-info glyphicon glyphicon-share-alt" ></a>
+                  <a href="{{ path('service_edit', { 'id': service.id }) }}" class="btn btn-primary glyphicon glyphicon-pencil" ></a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('service_new') }}">Create a new service</a>
-        </li>
-    </ul>
 {% endblock %}
