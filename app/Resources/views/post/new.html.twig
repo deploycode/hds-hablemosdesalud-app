@@ -13,3 +13,9 @@
       </div>
     {{ form_end(form) }}
 {% endblock %}
+{% block WYSIWYG %}
+<script>
+    var editor = CKEDITOR.replace( 'appbundle_post_content' );
+    CKFinder.setupCKEditor( editor, 'ckfinder/' );
+</script>
+{% endblock %}

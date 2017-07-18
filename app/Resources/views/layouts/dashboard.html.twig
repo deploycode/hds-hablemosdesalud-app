@@ -30,6 +30,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="{{asset('plugins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('plugins/ckfinder/ckfinder.js')}}"></script>
+
 </head>
 
 <body>
@@ -180,7 +183,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('../dashboard/dist/js/sb-admin-2.js') }}"></script>
-
+    {% block WYSIWYG %}{% endblock %}
 </body>
 
 </html>
