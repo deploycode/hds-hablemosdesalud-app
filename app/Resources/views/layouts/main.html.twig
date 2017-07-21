@@ -89,7 +89,7 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">Suscríbase</h4>
 						</div>
-						<form class="" action="" method="post">
+						<form class="form" action="{{ path('correo') }}" method="post">
 							<div class="modal-body">
 								<div class="form-group">
 									<label for="name">Nombre:</label>
@@ -176,7 +176,7 @@
 				<!-- formulario -->
 				<div class="col-xs-12 col-md-4">
 					<h4>Subscríbete a nuestras publicaciones</h4>
-					<form class="form" action="" method="post">
+					<form class="form" action="{{ path('correo') }}" method="post">
 						<input type="email" name="email" class="text-footer" placeholder="Escriba aquí su email" required>
 						<input type="submit" class="btn btn-lg btn-footer" value="Suscribirme">
 					</form>
