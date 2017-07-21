@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es_ES">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel='shortcut icon' type='image/x-icon' href='favicon.ico'/>
+		<link rel="alternate" href="http://www.hablemosdesalud.com.co" hreflang="es" />
+
+		<title>{% block meta_title %}{% endblock %}</title>
+		<meta name="description" content=" {% block meta_description %}{% endblock %}">
+		<meta name="keywords" content="Salud Hombre, Salud Mujer, Salud Niños, Salud Visual, Salud Dental, Biorreguladora">
+
+		<link rel="stylesheet" href="{{asset('hds/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{asset('hds/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{asset('hds/css/main.css')}}">
+		<link rel="stylesheet" href="{{asset('hds/css/footer-styles.css')}}">
+		<link rel="stylesheet" href="{{asset('hds/css/carousel-styles.css')}}">
+		<link rel="stylesheet" media="(min-width: 769px)" href="{{asset('hds/css/desktop-styles.css')}}">
+		<link rel="stylesheet" media="(max-width: 768px)" href="{{asset('hds/css/mobile-styles.css')}}">
+	</head>
+	<body>
+		<header>
+			<!-- primer menu -->
+			<nav class="navbar menu-first theme-salud-visual">
+				<div class="container-fluid">
+					<!-- boton versión móvil -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand hidden-lg hidden-md" href="/">Hablemos de Salud</a>
+					</div>
+					<!--opciones-->
+					<div class="collapse navbar-collapse hidden-xs">
+						<ul class="nav navbar-nav ul-contact">
+							<li><a href="#contactenos">Contacto</a></li>
+							<li><a href="#" class="btn-suscripcion"  data-toggle="modal" data-target="#myModal">Suscríbase</a></li>
+						</ul>
+						<!-- <<ul class="nav navbar-nav navbar-right">
+							<form class="navbar-form navbar-left" action="" method="POST">
+									<button type="submit" class="btn btn-lg theme-salud-visual"><i class="fa fa-search"></i></button>
+									<div class="form-group buscador">
+									<input type="text" class="txt-browser" placeholder="Buscar" size="40" required>
+								</div>
+							</form>
+						</ul> -->
+				  </div>
+				</div>
+			</nav>
+			<!-- segundo menu -->
+			<nav class=" menu-second hidden-sm">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<!-- logo hablemos de salud -->
+						<ul class="nav navbar-nav ul-logo hidden-xs">
+							<li><a href="/"><img src="{{asset('hds/img/imagen-corporativa-hablemos-de-salud.png')}}" class="ancho200"></a></li>
+						</ul>
+						<!-- redes sociales -->
+						<ul class="nav navbar-nav navbar-right ul-social hidden-xs">
+							<li><a target="_blank" href="https://www.facebook.com/hablemosdesalud.com.co"><i class="fa fa-facebook"></i></a></li>
+							<li><a target="_blank" href="https://twitter.com/hablemosdsalud?lang=es"><i class="fa fa-twitter"></i></a></li>
+							<li><a target="_blank" href="https://www.youtube.com/channel/UC6Hg_5KzRe5YKetvZc-ZEmA"><i class="fa fa-youtube"></i></a></li>
+							<li><a target="_blank" href="https://plus.google.com/117567823118661042380"><i class="fa fa-google-plus"></i></a></li>
+						</ul>
+						<!-- opciones versión móvil -->
+						<ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+              {% for service in services %}
+                <li><a href="/servicios/{{service.slug}}" class="theme-{{service.slug}}">{{service.name}}</a></li>
+              {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- tercer menu -->
+			<ul class="nav nav-pills nav-justified menu-third sombra padding-sombra hidden-xs">
+        {% for service in services %}
+          <li><a href="/servicios/{{service.slug}}" class="theme-{{service.slug}}">{{service.name}}</a></li>
+        {% endfor %}
+			</ul>
+			<!-- modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Suscríbase</h4>
+						</div>
+						<form class="" action="" method="post">
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="name">Nombre:</label>
+									<input type="text" name="name" class="form-control" placeholder="Favor ingrese su nombre" required>
+								</div>
+								<div class="form-group">
+									<label for="phone">Teléfono:</label>
+									<input type="text" name="phone" class="form-control" placeholder="Favor ingrese un número de contacto" required>
+								</div>
+								<div class="form-group">
+									<label for="email">Correo:</label>
+									<input type="text" name="email" class="form-control" placeholder="Favor ingrese su correo electrónico" required>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+								<button type="submit" class="btn btn-success">Suscribirme</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- contenido -->
+		<section class="container-fluid">
+      {% block body %}{% endblock %}
+		</section>
+		<!-- footer -->
+		<footer>
+	    <div class="container-fluid" id="contactenos">
+	      <div class="row my-fila" id="iconos">
+					<!-- correo -->
+					<div class="col-xs-12 col-md-3  icons">
+						<img src="{{asset('hds/img/cuenta-oficial-de-correo-electronico-de-alta-vision.png')}}" >
+						<p>comunicaciones <br> @hablemosdesalud.com.co</p>
+					</div>
+					<!-- nuestra clínica -->
+					<div class="col-xs-12 col-md-2  icons">
+						<img src="{{asset('hds/img/icono-nuestra-clinica.png')}}" class="alto91px">
+						<p>Nuestra Clinica</p>
+					</div>
+					<!-- teléfono -->
+					<div class="col-xs-12 col-md-2  icons">
+						<img src="{{asset('hds/img/icono-numero-de-contacto-alta-vision.png')}}" >
+						<p>6164585 opción 5</p>
+					</div>
+					<!-- dirección -->
+	        <div class="col-xs-12 col-md-2 icons">
+	          <img src="{{asset('hds/img/icono-direccion-de-alta-vision.png')}}" >
+	          <p>Carrera 14 No. 86a - 15<br> Bogotá Colombia</p>
+	        </div>
+					<!-- redes sociales -->
+	        <div class="col-xs-12 col-md-3  icons">
+	          <a target="_blank" href="https://www.facebook.com/hablemosdesalud.com.co"><img src="{{asset('hds/img/cuenta-oficial-de-facebook-de-alta-vision.png')}}" alt=""></a>
+	          <a target="_blank" href="https://twitter.com/HablemosDSalud"><img src="{{asset('hds/img/cuenta-oficial-de-altavision-en-twitter.png')}}" alt=""></a>
+	          <a target="_blank" href="https://www.youtube.com/channel/UC6Hg_5KzRe5YKetvZc-ZEmA"><img src="{{asset('hds/img/cuenta-oficial-de-youtube-de-alta-vision.png')}}" alt=""></a>
+	          <a target="_blank" href="https://plus.google.com/117567823118661042380"><img src="{{asset('hds/img/cuenta-oficial-de-google-plus-de-alta-vision.png')}}" alt=""></a>
+	        </div>
+	      </div>
+	    </div>
+	    <!-- mapa -->
+	    <div class="row my-fila" >
+	      <div class="col-xs-12">
+	        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d591.120275049058!2d-74.05404090564285!3d4.670947465722067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9af4a923560b%3A0x7d3f3806b89a62cd!2sCra.+14+%2386A-15%2C+Bogot%C3%A1%2C+Colombia!5e0!3m2!1ses!2ses!4v1484573723417" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+	      </div>
+	    </div>
+	    <!-- subir -->
+	    <div id="indicador-de-subir" class="col-xs-12 text-center">
+	      <span class="glyphicon glyphicon-chevron-up" id="subir"></span>
+	    </div>
+	    <!-- marcas -->
+	    <div id="logos" class="row my-fila" >
+				<!-- hablemos de salud -->
+				<div class="col-xs-12 col-md-4">
+					<h4><img src="{{asset('hds/img/imagen-corporativa-hablemos-de-salud.png')}}" alt="" class="img img-responsive logo-hablemos"></h4>
+					<p>
+						Somos un equipo de personas que trabaja con amor, profesionalismo y un interés genuino por la salud de las
+						familias colombianas. Educamos a nuestros pacientes a través de la entrega de información vital y la promoción
+						de hábitos saludables. <br><br>
+						Trabajamos con nuestras unidades de servicio bajo principios de efectividad, tecnología y confianza para
+						garantizar el oportuno diagnóstico y tratamiento de las enfermedades con mayor impacto en la población
+					</p>
+				</div>
+				<!-- formulario -->
+				<div class="col-xs-12 col-md-4">
+					<h4>Subscríbete a nuestras publicaciones</h4>
+					<form class="form" action="" method="post">
+						<input type="email" name="email" class="text-footer" placeholder="Escriba aquí su email" required>
+						<input type="submit" class="btn btn-lg btn-footer" value="Suscribirme">
+					</form>
+				</div>
+				<!-- links -->
+				<div class="col-xs-12 col-md-4">
+					<h4>Nuestras marcas</h4>
+					<div class="col-xs-12 col-md-4 text-center">
+						<p><img src="{{asset('hds/img/imagen-corporativa-hablemos-de-salud.png')}}" alt="" class="img img-responsive img-marcas"></p>
+					</p><img src="{{asset('hds/img/imagen-corporativa-de-altavision.png')}}" alt="" class="img img-responsive img-marcas"></p>
+					</div>
+					<div class="col-xs-12 col-md-8">
+						<ul class="salud nav nav-pills nav-stacked">
+							<li class="disabled"><a href="#">Salud Hombre</a></li>
+							<li class="disabled"><a href="#">Salud Mujer</a></li>
+							<li class="disabled"><a href="#">Salud Niños</a></li>
+							<li class="activo"><a target="_blank" href="http://www.altavision.co">Salud Visual</a></li>
+							<li class="disabled"><a href="#">Salud dental</a></li>
+							<li class="disabled"><a href="#">Biorreguladora</a></li>
+						</ul>
+					</div>
+				</div>
+	    </div>
+	    <!-- copyright -->
+	    <div id="footer" class="col-xs-12 azul-oscuro" >
+	      <p>
+					Todas las marcas registradas son propiedad de la compañía respectiva o de <font style="font-weight:bold">ALTA VISIÓN S.A.S</font> Se prohíbe la reporducción total o parcial de cualquiera de los contenidos que aquí apareza, así como de su traducción a cualquier idioma sin autorización escrita de su titular
+	      </p>
+				<p>
+					Copyright © 2017 Alta Visión S.A.S Todos los derechos reservados.
+				</p>
+	    </div>
+		</footer>
+		<script src="{{asset('hds/plugins/jquery-3.2.1.min.js')}}"></script>
+		<script src="{{asset('hds/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('hds/js/main.js')}}"></script>
+	</body>
+</html>

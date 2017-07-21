@@ -1,36 +1,275 @@
-<body>
-  {% for service in services %}
-      <li><a href="/servicios/{{service.slug}}">{{service.name}}</a></li>
-  {% endfor %}
-  <br><br>
-  <h1>Post favorito</h1>
-  {{f_post.title}}<br><br>
-  <h4>Collage</h4>
-  {% for post in collage %}
-    {% if loop.index < 5 %}
-      {{post.title}}<br>
-    {% endif %}
-  {% endfor %}
-  <h4>Lo más recientes</h4>
-  {% for post in collage %}
-    {% if loop.index < 8 %}
-      {{post.title}}<br>
-      <img src="{{asset('uploads/')}}{{post.image}}" alt="">
-    {% endif %}
-  {% endfor %}
-  <h4>7 por servicio</h4>
-  {% for service in services %}
-  <strong>{{service.name}}</strong> <br>
-    {% for post in collage if post.menu.service.id == service.id %}
-      {% if loop.index < 8 %}
-        {{post.title}}<br>
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-  <h4>Noticias</h4>
-  {% for post in collage %}
-    {% if loop.index < 8 %}
-      {{post.title}}<br>
-    {% endif %}
-  {% endfor %}
-</body>
+{% extends 'layouts/main.html.twig' %}
+{% block meta_title %}Incio | Hablemos de Salud{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body %}
+  <!-- collage -->
+  <div class="row collage hidden-xs hidden-sm">
+    <!-- f-post -->
+    <div class="card col-xs-12 col-sm-6">
+      <a href="articulos/{{f_post.slug}}">
+        <img src="{{asset('/uploads/')}}{{f_post.image}}" class="f-post" />
+        <div class="caption-lg theme-{{f_post.menu.service.slug}}">
+          <h3>{{f_post.title}}</h3>
+          <p>{{f_post.abstract}}</p>
+       </div>
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <!-- c-post -->
+      {% for post in collage %}
+        {% if loop.index < 5 %}
+          <div class="card col-xs-12 col-sm-6">
+            <a href="/articulos/{{post.slug}}">
+              <img src="/uploads/{{post.image}}" class="img img-responsive c-post" />
+              <div class="caption-xs theme-{{post.menu.service.slug}}">
+                <h3>{{post.title}}</h3>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <!-- salud-visual -->
+  <div class="row my-fila">
+    <div class="col-xs-12 col-md-8 content">
+      <!-- titulo -->
+      <h2 class="font-salud-visual bariol bold col-xs-12 col-md-6">Salud Visual</h2>
+      <!-- menus -->
+      <div class="col-xs-12 col-md-6 hidden-xs">
+        <ul class="nav nav-pills nav-justified menu">
+          {% for service in services if service.slug == 'salud-visual' %}
+            {% for menu in service.menus %}
+              <li><a href="/temas/{{menu.slug}}">{{menu.name}}</a></li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- barra -->
+      <div class="col-xs-12"><hr class="hr-salud-visual"></div>
+      <!-- collage -->
+      {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+        {% if loop.first %}
+          <article class="col-xs-12 col-md-6">
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <img src="/uploads/{{post.image}}" class="img img-responsive">
+                <div class="caption">
+                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <p>{{post.abstract}}</p>
+                  <p>{{post.updatedAt|date('Y-m-d')}}</p>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% elseif loop.index < 7 %}
+          <!-- collage -->
+          <article class="col-xs-12 col-md-6">
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <div class="col-xs-5">
+                  <img src="/uploads/{{post.image}}" alt="{{post.title}}" class="img img-responsive">
+                </div>
+                <div class="col-xs-7 caption-mini ">
+                  <h4 class="font-salud-visual">{{post.title}}</h6>
+                  <p>{{post.abstract}}</p>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <!-- lo mas reciente -->
+    <aside class="hidden-xs hidden-sm col-md-4 aside">
+      <!-- reciente -->
+      <div class="jumbotron">
+        <h5 class="lo-mas-leido">Reciente <i class="glyphicon glyphicon-fire pull-right"></i></h5>
+        <hr>
+        {% for post in collage %}
+          {% if loop.index < 7 %}
+            <div class="row ads">
+              <a href="/articulos/{{post.slug}}">
+                <div class="col-xs-5">
+                  <img src="/uploads/{{post.image}}" alt="{{post.title}}" class="img img-responsive anchoal100">
+                </div>
+              </a>
+              <div class="col-xs-7 caption-aside ">
+                <h5 class="font-{{post.menu.service.slug}}">{{post.title}}</h5>
+                <p id="p-abstract">
+                  {{post.abstract}}
+                </p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <!-- anuncio -->
+    </aside>
+  </div>
+  <!-- biorreguladora y salud mujer -->
+  <div class="row my-fila">
+    <div class="col-xs-12 col-md-8 content">
+      <!-- collage biorreguladora -->
+      <article class="col-xs-12 col-md-6">
+        <!-- titulo -->
+        <h2 class="font-biorreguladora">Biorreguladora</h2>
+        <!-- barra -->
+        <hr class="hr-biorreguladora">
+        <!-- collage -->
+        {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+          {% if loop.first %}
+            <!-- f-post -->
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive">
+                <div class="caption">
+                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <p>{{post.abstract}}</p>
+                  <p>{{post.updatedAt|date('Y-m-d')}}</p>
+                </div>
+              </div>
+            </a>
+          {% elseif loop.index < 5 %}
+            <!-- c-post -->
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <div class="col-xs-5">
+                  <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive">
+                </div>
+                <div class="col-xs-7 caption-mini ">
+                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <p>{{post.abstract}}</p>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </article>
+      <!-- collage salud mujer -->
+      <article class="col-xs-12 col-md-6">
+        <!-- titulo -->
+        <h2 class="font-salud-mujer">Salud Mujer</h2>
+        <!-- barra -->
+        <hr class="hr-salud-mujer">
+        {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+          {% if loop.first %}
+            <!-- f-post -->
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive">
+                <div class="caption">
+                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <p>{{post.abstract}}</p>
+                  <p>{{post.updatedAt|date('Y-m-d')}}</p>
+                </div>
+              </div>
+            </a>
+          {% elseif loop.index < 5 %}
+            <!-- c-post -->
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <div class="col-xs-5">
+                  <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive">
+                </div>
+                <div class="col-xs-7 caption-mini ">
+                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <p>{{post.abstract}}</p>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </article>
+    </div>
+    <!-- anuncios -->
+    <aside class="hidden-xs hidden-sm col-md-4 aside">
+    </aside>
+  </div>
+  <!-- fila salud hombre -->
+  <div class="row my-fila">
+    <div class="col-xs-12 col-md-8 content">
+      <!-- titulo -->
+      <h2 class="font-salud-hombres col-xs-12 col-md-6 bariol bold">Salud Hombre</h2>
+      <!-- menus -->
+      <div class="hidden-xs col-md-6">
+        <ul class="nav nav-pills nav-justified menu">
+          {% for service in services if service.slug == 'salud-hombre' %}
+            {% for menu in service.menus %}
+              <li><a href="/temas/{{menu.slug}}">{{menu.name}}</a></li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- barra -->
+      <div class="col-xs-12"><hr class="hr-salud-hombre"></div>
+      <!-- collage -->
+      {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+        {% if loop.first %}
+          <article class="col-xs-12 col-md-6">
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <img src="/uploads/{{post.image}}" class="img img-responsive">
+                <div class="caption">
+                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <p>{{post.abstract}}</p>
+                  <p>{{post.updatedAt|date('Y-m-d')}}</p>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% elseif loop.index < 7 %}
+          <!-- collage -->
+          <article class="col-xs-12 col-md-6">
+            <a href="/articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <div class="col-xs-5">
+                  <img src="/uploads/{{post.image}}" alt="{{post.title}}" class="img img-responsive">
+                </div>
+                <div class="col-xs-7 caption-mini ">
+                  <h4 class="font-salud-visual">{{post.title}}</h6>
+                  <p>{{post.abstract}}</p>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <!-- anuncios -->
+    <aside class="hidden-xs hidden-sm col-md-4 aside">
+    </aside>
+  </div>
+  <!-- noticias -->
+  <div class="row my-fila">
+    <div class="col-xs-12 col-md-8 content">
+      <!-- titulo -->
+      <h2 class="col-xs-12 bariol bold">Noticias</h2>
+      <!-- barra -->
+      <div class="col-xs-12"><hr></div>
+      <!-- las noticias -->
+      <article class="col-xs-12">
+        <!-- new -->
+        {% for post in collage %}
+        {% if loop.index < 8 %}{% endif %}
+          <a href="articulos/{{post.slug}}">
+            <div class="thumbnail">
+              <div class="col-xs-12 col-md-4">
+                <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive img-noticias">
+              </div>
+              <div class="col-xs-12 col-md-8 caption-md ">
+                <h5 class="font-{{post.menu.service.slug}}">{{post.menu.service.name}}</h5>
+                <h4>{{post.title}}</h4>
+                <p>{{post.abstract}}</p>
+                <p class="text-right">{{post.updatedAt|date('Y-m-d')}}</p>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </article>
+    </div>
+    <!-- anuncios-new -->
+    <aside class="hidden-xs  hidden-sm col-md-4 aside">
+    </aside>
+  </div>
+{% endblock %}

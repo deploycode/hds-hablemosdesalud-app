@@ -19,7 +19,7 @@ class FrontController extends Controller
     $services = $em->getRepository('AppBundle:Service')->findAll();
     //El post con el id 1
     $f_post = $em->getRepository('AppBundle:Post')->findOneById(3);
-    //los 7 más recientes
+    //todos los posts
     $query = $em->getRepository('AppBundle:Post')->createQueryBuilder('p')
     ->orderBy('p.updatedAt', 'DESC')
     ->getQuery();
@@ -33,21 +33,39 @@ class FrontController extends Controller
   */
   public function servicioAction(Service $service)
   {
-      return $this->render('service.html.twig' , array('service' => $service) );
+    $em = $this->getDoctrine()->getManager();
+    $services = $em->getRepository('AppBundle:Service')->findAll();
+    $query = $em->getRepository('AppBundle:Post')->createQueryBuilder('p')
+    ->orderBy('p.updatedAt', 'DESC')
+    ->getQuery();
+    $collage = $query->getResult();
+    return $this->render('service.html.twig' , array('service' => $service , 'services' => $services , 'collage'=>$collage) );
   }
   /**
   *@Route("/temas/{slug}", name="tema")
   */
   public function temaAction(Menu $menu)
   {
-    return $this->render('menu.html.twig' , array('menu' => $menu) );
+    $em = $this->getDoctrine()->getManager();
+    $services = $em->getRepository('AppBundle:Service')->findAll();
+    $query = $em->getRepository('AppBundle:Post')->createQueryBuilder('p')
+    ->orderBy('p.updatedAt', 'DESC')
+    ->getQuery();
+    $collage = $query->getResult();
+    return $this->render('menu.html.twig' , array('menu' => $menu, 'services' => $services , 'collage'=>$collage) );
   }
   /**
   *@Route("/articulos/{slug}", name="articulo")
   */
   public function articuloAction(Post $post)
   {
-    return $this->render('post.html.twig' , array('post' => $post) );
+    $em = $this->getDoctrine()->getManager();
+    $services = $em->getRepository('AppBundle:Service')->findAll();
+    $query = $em->getRepository('AppBundle:Post')->createQueryBuilder('p')
+    ->orderBy('p.updatedAt', 'DESC')
+    ->getQuery();
+    $collage = $query->getResult();
+    return $this->render('post.html.twig' , array('post' => $post ,'services'=>$services , 'collage'=>$collage) );
   }
   /**
   *@Route("/email", name="correo")

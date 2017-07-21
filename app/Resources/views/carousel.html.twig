@@ -1,0 +1,29 @@
+<!-- te puede interesar -->
+<div class="col-xs-12">
+  <hr class="hr-salud-visual">
+  <h3 class="font-salud-visual bariol bold text-center">Te puede interesar</h3>
+  <br>
+  <br>
+</div>
+<!-- carousel -->
+<div class="row my-fila">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="carousel carousel-showmanymoveone slide" id="carousel-tilenav" data-interval="false">
+      <div class="carousel-inner">
+        {% for post in collage %}
+          <div class="item {% if loop.first %} active {% endif %}">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <a rel="nofollow" rel="noreferrer"href="/articulos/{{post.slug}}"><img src="{{asset('uploads/')}}{{post.image}}" class="img-responsive"></a>
+              <div class="caption-xxs theme-{{post.menu.service.slug}}">
+                <h3>{{post.title}}</h3>
+                <p>{{post.abstract}}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <a rel="nofollow" rel="noreferrer"class="left carousel-control" href="#carousel-tilenav" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+      <a rel="nofollow" rel="noreferrer"class="right carousel-control" href="#carousel-tilenav" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+    </div>
+  </div>
+</div>

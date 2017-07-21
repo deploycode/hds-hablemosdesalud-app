@@ -1,56 +1,88 @@
-<body>
-  <h1>Post</h1>
-
-  <table>
-      <tbody>
-          <tr>
-              <th>Id</th>
-              <td>{{ post.id }}</td>
-          </tr>
-          <tr>
-              <th>Title</th>
-              <td>{{ post.title }}</td>
-          </tr>
-          <tr>
-              <th>Slug</th>
-              <td>{{ post.slug }}</td>
-          </tr>
-          <tr>
-              <th>Image</th>
-              <td>{{ post.image }}</td>
-          </tr>
-          <tr>
-              <th>Abstract</th>
-              <td>{{ post.abstract }}</td>
-          </tr>
-          <tr>
-              <th>Content</th>
-              <td>{{ post.content }}</td>
-          </tr>
-          <tr>
-              <th>Isactive</th>
-              <td>{% if post.isActive %}Yes{% else %}No{% endif %}</td>
-          </tr>
-          <tr>
-              <th>Createdat</th>
-              <td>{% if post.createdAt %}{{ post.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-          </tr>
-          <tr>
-              <th>Updatedat</th>
-              <td>{% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-          </tr>
-          <tr>
-            <th>Menu</th>
-            <td>
-               {{post.menu.name}}
-            </td>
-          </tr>
-          <tr>
-            <th>Service</th>
-            <td>
-              {{post.menu.service.name}}
-            </td>
-          </tr>
-      </tbody>
-  </table>
-</body>
+{% extends 'layouts/main.html.twig' %}
+{% block meta_title %} {{post.title}} | {{post.menu.service.name}} | Hablemos de Salud{% endblock %}
+{% block meta_description %} {{post.abstract}} | Hablemos de Salud {% endblock %}
+{% block body %}
+  <div class="row my-fila marginTop80"><!--fila salud visual-->
+    <!-- breadcrumb -->
+    <div class="col-xs-12">
+      <ol class="breadcrumb">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/{{post.menu.service.slug}}">{{post.menu.service.name}}</a></li>
+        <li><a href="/temas/{{post.menu.slug}}">{{post.menu.name}}</a></li>
+        <li class="active">{{post.title}}</li>
+      </ol>
+    </div>
+    <!-- artiuclo -->
+    <article class="col-xs-12 col-md-8 content">
+      <!-- menus -->
+      <ul class="nav nav-pills nav-justified menu-salud-visual hidden-xs">
+        {% for menu in post.menu.service.menus %}
+          <li><a class="internal-menu" href="/temas/{{menu.slug}}">{{menu.name}}</a></li>
+        {% endfor %}
+      </ul>
+      <!-- titulo-imagen-abstract -->
+      <div class="card pic-post">
+        <img src="{{ asset('uploads/') }}{{post.image}}" class="img img-responsive anchoal100" />
+        <div class="caption-lg theme-{{post.menu.service.slug}}">
+          <h3>{{post.title}}</h3>
+          <p class="hidden-xs">
+           {{post.abstract}}
+          </p>
+        </div>
+      </div>
+      <!-- fecha -->
+      <div class="col-xs-12">
+        <p id="fecha-publicacion">{{post.updatedAt|date('Y-m-d')}}</p>
+      </div>
+      <!-- barra -->
+      <div class="col-xs-12 sin-padding">
+        <hr class="hr-{{post.menu.service.slug}}">
+      </div>
+      <!-- contenido del post -->
+      <div class="col-xs-12 sin-padding" id="p-post">
+        <p class="parrafo-post">
+          {{post.content|raw}}
+        </p>
+      </div>
+    </article>
+    <!-- lista -->
+    <aside class="col-xs-12 col-md-4 aside"><!--lo mas leido-->
+      <div class="jumbotron">
+        {% for articulo in collage if articulo.menu.slug == post.menu.slug %}
+          <div class="row ads">
+            <div class="col-xs-12 text-right">
+              <span class="theme-{{articulo.menu.service.slug}}" id="orden"><label id="label-orden">{{loop.index}}</label></span>
+            </div>
+            <div class="col-xs-12">
+              <div class="card">
+                <a href="/articulos/{{articulo.slug}}">
+                  <img src="{{asset('uploads/')}}{{articulo.image}}" class="img img-responsive c-post" />
+                  <div class="caption-xs theme-{{articulo.menu.service.slug}}">
+                    <h3>{{articulo.title}}</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <form class="form-inscripcion" action="index.html" method="post">
+        <div class="row form-group">
+          <div class="col-xs-4">
+            <img src="{{asset('hds/img/icono-sobre.png')}}" alt="" class="img img-responsive">
+          </div>
+          <div class="col-xs-8">
+            <label id="label-inscripcion"for="">Inscríbete a nuestras publicaciones</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control" id="email-inscripcion" placeholder="Correo Electrónico">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Suscríbase"  id="submit-inscripcion" class="btn btn-success btn-lg">
+        </div>
+      </form>
+  </div>
+  <!-- te puede interesar -->
+  {{ include('carousel.html.twig') }}
+{% endblock %}
