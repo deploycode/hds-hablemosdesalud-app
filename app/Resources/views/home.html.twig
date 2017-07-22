@@ -117,7 +117,7 @@
         <!-- barra -->
         <hr class="hr-biorreguladora">
         <!-- collage -->
-        {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+        {% for post in collage if post.menu.service.slug == 'biorreguladroa' %}
           {% if loop.first %}
             <!-- f-post -->
             <a href="/articulos/{{post.slug}}">
@@ -152,7 +152,7 @@
         <h2 class="font-salud-mujer">Salud Mujer</h2>
         <!-- barra -->
         <hr class="hr-salud-mujer">
-        {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+        {% for post in collage if post.menu.service.slug == 'salud-mujer' %}
           {% if loop.first %}
             <!-- f-post -->
             <a href="/articulos/{{post.slug}}">
@@ -204,7 +204,7 @@
       <!-- barra -->
       <div class="col-xs-12"><hr class="hr-salud-hombre"></div>
       <!-- collage -->
-      {% for post in collage if post.menu.service.slug == 'salud-visual' %}
+      {% for post in collage if post.menu.service.slug == 'salud-hombre' %}
         {% if loop.first %}
           <article class="col-xs-12 col-md-6">
             <a href="/articulos/{{post.slug}}">
