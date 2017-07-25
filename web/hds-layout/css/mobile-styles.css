@@ -65,3 +65,6 @@
 .thumbnail .caption-md h5{
   margin-top: 10px;
 }
+.c-post{
+  min-height: inherit;
+}
