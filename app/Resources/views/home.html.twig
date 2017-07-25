@@ -32,7 +32,32 @@
   </div>
   <!-- salud-visual -->
   <div class="row my-fila">
-    <div class="col-xs-12 col-md-8 content">
+    <aside class="col-xs-12 hidden-sm hidden-md hidden-lg">
+      <!-- reciente -->
+      <div class="jumbotron">
+        <h5 class="lo-mas-leido">Reciente <i class="glyphicon glyphicon-fire pull-right"></i></h5>
+        <hr>
+        {% for post in collage %}
+          {% if loop.index < 7 %}
+            <div class="row ads">
+              <a href="/articulos/{{post.slug}}">
+                <div class="col-xs-6">
+                  <img src="/uploads/{{post.image}}" alt="{{post.title}}" class="img img-responsive anchoal100">
+                </div>
+              </a>
+              <div class="col-xs-6 caption-aside ">
+                <h5 class="font-{{post.menu.service.slug}}">{{post.title}}</h5>
+                <p id="p-abstract">
+                  {{post.abstract}}
+                </p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <!-- anuncio -->
+    </aside>
+    <div class="col-xs-12 col-md-8  content">
       <!-- titulo -->
       <h2 class="font-salud-visual bariol bold col-xs-12 col-md-6">Salud Visual</h2>
       <!-- menus -->
