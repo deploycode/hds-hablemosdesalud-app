@@ -6,6 +6,9 @@
   url("../fonts/Bariol/bde64ed1422104421598829868974f43.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
   url("../fonts/Bariol/bde64ed1422104421598829868974f43.svg#Bariol Regular") format("svg"); /* iOS 4.1- */
 }
+h1, h2, h3, h4, h5, h6{
+  text-align: left;
+}
 article>h2{
   font-family: "Bariol";
   font-size: 25px;
