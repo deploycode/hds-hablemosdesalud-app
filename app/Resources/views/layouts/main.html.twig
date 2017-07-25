@@ -11,13 +11,13 @@
 		<meta name="description" content=" {% block meta_description %}{% endblock %}">
 		<meta name="keywords" content="Salud Hombre, Salud Mujer, Salud Niños, Salud Visual, Salud Dental, Biorreguladora">
 
-		<link rel="stylesheet" href="{{asset('hds/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-		<link rel="stylesheet" href="{{asset('hds/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
-		<link rel="stylesheet" href="{{asset('hds/css/main.css')}}">
-		<link rel="stylesheet" href="{{asset('hds/css/footer-styles.css')}}">
-		<link rel="stylesheet" href="{{asset('hds/css/carousel-styles.css')}}">
-		<link rel="stylesheet" media="(min-width: 769px)" href="{{asset('hds/css/desktop-styles.css')}}">
-		<link rel="stylesheet" media="(max-width: 768px)" href="{{asset('hds/css/mobile-styles.css')}}">
+		<link rel="stylesheet" href="{{asset('hds-layout/plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{asset('hds-layout/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{asset('hds-layout/css/main.css')}}">
+		<link rel="stylesheet" href="{{asset('hds-layout/css/footer-styles.css')}}">
+		<link rel="stylesheet" href="{{asset('hds-layout/css/carousel-styles.css')}}">
+		<link rel="stylesheet" media="(min-width: 769px)" href="{{asset('hds-layout/css/desktop-styles.css')}}">
+		<link rel="stylesheet" media="(max-width: 768px)" href="{{asset('hds-layout/css/mobile-styles.css')}}">
 	</head>
 	<body>
 		<header>
@@ -34,8 +34,16 @@
 						</button>
 						<a class="navbar-brand hidden-lg hidden-md" href="/">Hablemos de Salud</a>
 					</div>
+					<!-- opciones versión móvil -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+							{% for service in services %}
+							<li><a href="/servicios/{{service.slug}}" class="theme-{{service.slug}}">{{service.name}}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
 					<!--opciones-->
-					<div class="collapse navbar-collapse hidden-xs">
+					<div class="hidden-xs">
 						<ul class="nav navbar-nav ul-contact">
 							<li><a href="#contactenos">Contacto</a></li>
 							<li><a href="#" class="btn-suscripcion"  data-toggle="modal" data-target="#myModal">Suscríbase</a></li>
@@ -54,10 +62,9 @@
 			<!-- segundo menu -->
 			<nav class=" menu-second hidden-sm">
 				<div class="container-fluid">
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<!-- logo hablemos de salud -->
 						<ul class="nav navbar-nav ul-logo hidden-xs">
-							<li><a href="/"><img src="{{asset('hds/img/imagen-corporativa-hablemos-de-salud.png')}}" class="ancho200"></a></li>
+							<li><a href="/"><img src="{{asset('hds-layout/img/imagen-corporativa-hablemos-de-salud.png')}}" class="ancho200"></a></li>
 						</ul>
 						<!-- redes sociales -->
 						<ul class="nav navbar-nav navbar-right ul-social hidden-xs">
@@ -66,13 +73,6 @@
 							<li><a target="_blank" href="https://www.youtube.com/channel/UC6Hg_5KzRe5YKetvZc-ZEmA"><i class="fa fa-youtube"></i></a></li>
 							<li><a target="_blank" href="https://plus.google.com/117567823118661042380"><i class="fa fa-google-plus"></i></a></li>
 						</ul>
-						<!-- opciones versión móvil -->
-						<ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-              {% for service in services %}
-                <li><a href="/servicios/{{service.slug}}" class="theme-{{service.slug}}">{{service.name}}</a></li>
-              {% endfor %}
-						</ul>
-					</div>
 				</div>
 			</nav>
 			<!-- tercer menu -->
@@ -114,7 +114,7 @@
 			</div>
 		</header>
 		<!-- contenido -->
-		<section class="container-fluid">
+		<section class="container-fluid" id="main">
       {% block body %}{% endblock %}
 		</section>
 		<!-- footer -->
@@ -123,30 +123,30 @@
 	      <div class="row my-fila" id="iconos">
 					<!-- correo -->
 					<div class="col-xs-12 col-md-3  icons">
-						<img src="{{asset('hds/img/cuenta-oficial-de-correo-electronico-de-alta-vision.png')}}" >
+						<img src="{{asset('hds-layout/img/cuenta-oficial-de-correo-electronico-de-alta-vision.png')}}" >
 						<p>comunicaciones <br> @hablemosdesalud.com.co</p>
 					</div>
 					<!-- nuestra clínica -->
 					<div class="col-xs-12 col-md-2  icons">
-						<img src="{{asset('hds/img/icono-nuestra-clinica.png')}}" class="alto91px">
+						<img src="{{asset('hds-layout/img/icono-nuestra-clinica.png')}}" class="alto91px">
 						<p>Nuestra Clinica</p>
 					</div>
 					<!-- teléfono -->
 					<div class="col-xs-12 col-md-2  icons">
-						<img src="{{asset('hds/img/icono-numero-de-contacto-alta-vision.png')}}" >
+						<img src="{{asset('hds-layout/img/icono-numero-de-contacto-alta-vision.png')}}" >
 						<p>6164585 opción 5</p>
 					</div>
 					<!-- dirección -->
 	        <div class="col-xs-12 col-md-2 icons">
-	          <img src="{{asset('hds/img/icono-direccion-de-alta-vision.png')}}" >
+	          <img src="{{asset('hds-layout/img/icono-direccion-de-alta-vision.png')}}" >
 	          <p>Carrera 14 No. 86a - 15<br> Bogotá Colombia</p>
 	        </div>
 					<!-- redes sociales -->
 	        <div class="col-xs-12 col-md-3  icons">
-	          <a target="_blank" href="https://www.facebook.com/hablemosdesalud.com.co"><img src="{{asset('hds/img/cuenta-oficial-de-facebook-de-alta-vision.png')}}" alt=""></a>
-	          <a target="_blank" href="https://twitter.com/HablemosDSalud"><img src="{{asset('hds/img/cuenta-oficial-de-altavision-en-twitter.png')}}" alt=""></a>
-	          <a target="_blank" href="https://www.youtube.com/channel/UC6Hg_5KzRe5YKetvZc-ZEmA"><img src="{{asset('hds/img/cuenta-oficial-de-youtube-de-alta-vision.png')}}" alt=""></a>
-	          <a target="_blank" href="https://plus.google.com/117567823118661042380"><img src="{{asset('hds/img/cuenta-oficial-de-google-plus-de-alta-vision.png')}}" alt=""></a>
+	          <a target="_blank" href="https://www.facebook.com/hablemosdesalud.com.co"><img src="{{asset('hds-layout/img/cuenta-oficial-de-facebook-de-alta-vision.png')}}" alt=""></a>
+	          <a target="_blank" href="https://twitter.com/HablemosDSalud"><img src="{{asset('hds-layout/img/cuenta-oficial-de-altavision-en-twitter.png')}}" alt=""></a>
+	          <a target="_blank" href="https://www.youtube.com/channel/UC6Hg_5KzRe5YKetvZc-ZEmA"><img src="{{asset('hds-layout/img/cuenta-oficial-de-youtube-de-alta-vision.png')}}" alt=""></a>
+	          <a target="_blank" href="https://plus.google.com/117567823118661042380"><img src="{{asset('hds-layout/img/cuenta-oficial-de-google-plus-de-alta-vision.png')}}" alt=""></a>
 	        </div>
 	      </div>
 	    </div>
@@ -164,7 +164,7 @@
 	    <div id="logos" class="row my-fila" >
 				<!-- hablemos de salud -->
 				<div class="col-xs-12 col-md-4">
-					<h4><img src="{{asset('hds/img/imagen-corporativa-hablemos-de-salud.png')}}" alt="" class="img img-responsive logo-hablemos"></h4>
+					<h4><img src="{{asset('hds-layout/img/imagen-corporativa-hablemos-de-salud.png')}}" alt="" class="img img-responsive logo-hablemos"></h4>
 					<p>
 						Somos un equipo de personas que trabaja con amor, profesionalismo y un interés genuino por la salud de las
 						familias colombianas. Educamos a nuestros pacientes a través de la entrega de información vital y la promoción
@@ -185,8 +185,8 @@
 				<div class="col-xs-12 col-md-4">
 					<h4>Nuestras marcas</h4>
 					<div class="col-xs-12 col-md-4 text-center">
-						<p><img src="{{asset('hds/img/imagen-corporativa-hablemos-de-salud.png')}}" alt="" class="img img-responsive img-marcas"></p>
-					</p><img src="{{asset('hds/img/imagen-corporativa-de-altavision.png')}}" alt="" class="img img-responsive img-marcas"></p>
+						<p><img src="{{asset('hds-layout/img/imagen-corporativa-hablemos-de-salud.png')}}" alt="" class="img img-responsive img-marcas"></p>
+					</p><img src="{{asset('hds-layout/img/imagen-corporativa-de-altavision.png')}}" alt="" class="img img-responsive img-marcas"></p>
 					</div>
 					<div class="col-xs-12 col-md-8">
 						<ul class="salud nav nav-pills nav-stacked">
@@ -210,8 +210,8 @@
 				</p>
 	    </div>
 		</footer>
-		<script src="{{asset('hds/plugins/jquery-3.2.1.min.js')}}"></script>
-		<script src="{{asset('hds/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
-		<script src="{{asset('hds/js/main.js')}}"></script>
+		<script src="{{asset('hds-layout/plugins/jquery-3.2.1.min.js')}}"></script>
+		<script src="{{asset('hds-layout/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('hds-layout/js/main.js')}}"></script>
 	</body>
 </html>

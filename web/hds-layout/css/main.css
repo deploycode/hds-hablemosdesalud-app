@@ -1,0 +1,508 @@
+@font-face {font-family: "Bariol";
+  src: url("../fonts/Bariol/bde64ed1422104421598829868974f43.eot"); /* IE9*/
+  src: url("../fonts/Bariol/bde64ed1422104421598829868974f43.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/Bariol/bde64ed1422104421598829868974f43.woff2") format("woff2"), /* chrome、firefox */
+  url("../fonts/Bariol/bde64ed1422104421598829868974f43.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/Bariol/bde64ed1422104421598829868974f43.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/Bariol/bde64ed1422104421598829868974f43.svg#Bariol Regular") format("svg"); /* iOS 4.1- */
+}
+article>h2{
+  font-family: "Bariol";
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+body{
+  font-family: "Helvetica";
+}
+button.btn{
+  border-radius:0px;
+}
+hr , .jumbotron hr{
+  border-top: 2px solid;
+  margin-top: 10px;
+}
+nav{
+  font-family: "Bariol";
+}
+section{
+  padding: 0px!important;
+}
+a{
+  color: black;
+  text-decoration: none!important;
+}
+/*CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC*/
+#content-post>p{
+  font-size: 19px;
+  margin-top: 20px;
+}
+/*EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/
+#email-inscripcion{
+  background-color: #b1dff7;
+  font-size: 25px;
+  text-align: center;
+  padding: 25px;
+}
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+#hr-gris{
+  border: 1px solid #d1d1d1;
+}
+/*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
+#iconos-compartir i{
+  font-size: 30px;
+  padding: 10px;
+}
+#indicadores>i , #fecha-publicacion{
+  font-size: 25px;
+  padding: 10px;
+}
+/*LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL*/
+#logo-hablemosdesalud{
+  border-right:  1px solid #2188ca;
+}
+#logo-hablemosdesalud>a{
+  padding: 0px 10px;
+}
+#logo-hablemosdesalud>a:hover{
+  background-color: transparent!important;
+}
+#logo-altavision{
+  padding: 0px 10px;
+  border-right:  1px solid #dbdbdb;
+}
+#label-inscripcion{
+  font-size: 20px;
+  color: white;
+}
+/*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+#nav-breadcrumb{
+  margin: 10px 0px;
+}
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+#orden{
+  padding: 5px 15px;
+  font-size: 40px;
+  border-radius: 60px;
+  color: white;
+  font-family: "Bariol";
+  position: absolute;
+  right: 2px;
+  z-index: 1;
+  width: 68px;
+  text-align: center;
+}
+/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/
+#p-post{
+  font-size: 19px;
+}
+#p-abstract{
+  font-size: 10px;
+  height: 55px;
+  overflow: hidden;
+}
+/*SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+#submit-inscripcion{
+  width: 100%;
+  font-size: 20px;
+}
+/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
+#titulo-saludvisual{
+  margin-top: 15px;
+  font-weight: bold;
+}
+/*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+.aside{
+  padding-left: 80px;
+  padding-right:  60px;
+}
+.ads{
+  padding: 10px 0px;
+}
+.ancho200{
+  width: 200px;
+}
+.anchoal100{
+  width: 100%;
+}
+.alto91px{
+  height: 91px;
+}
+.activo{
+  background-color: #d5ebff;
+}
+/*BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB*/
+.btn-suscripcion{
+  border-right: 1px solid white;
+}
+.bariol{
+  font-family: Bariol;
+}
+.bold{
+  font-weight: bold;
+}
+/*CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC*/
+.caption p{
+  line-height: 16px;
+}
+.caption-lg , .caption-xs, .caption-xxs{
+    bottom: 0;
+    color: #FFFFFF;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+    height:40%;
+    padding:20px 80px;
+    overflow: hidden;
+    text-align: justify;
+}
+  .caption-xxs{
+    padding: 10px;
+    opacity: 0.9;
+  }
+  .caption-xxs h3{
+    font-size: 15px;
+    margin: 0px;
+  }
+  .caption-xxs p{
+    font-size: 8px;
+  }
+.caption-lg>h3{
+  font-size: 30px;
+  font-weight: bold;
+}
+.caption-lg>p{
+  font-size: 15px;
+  line-height: 15px;
+}
+.caption-xs>h3{
+  font-size: 15px;
+  font-weight: bold;
+}
+.caption-xs>p{
+  font-size: 14px;
+  line-height: 14px;
+}
+.card:hover .caption-lg, .card:hover .caption-xs {
+    opacity: 1;
+}
+.card {
+  position: relative;
+}
+.caption-aside h6{
+  font-size: 14px;
+  font-weight: bold;
+}
+.caption-aside h5{
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0px;
+}
+.caption-aside i{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.carousel-control i{
+  background-color: gray;
+  border-radius: 25px;
+  margin-left: -34px!important;
+  margin-right: -34px!important;
+  /*width: 40px!important;
+  height: 40px!important;
+  margin-top: -20px!important;
+  font-size: 30px!important;*/
+}
+.carousel-control{
+  opacity: 1!important;
+}
+.collage{
+  margin: 0px;
+  margin-top: 55px;
+  margin-bottom: 15px;
+}
+          .collage .col-sm-6{
+            padding: 0px;
+          }
+.content{
+  padding-left:  60px;
+}
+.c-post{
+  width: 100%;
+  min-height: 230px;
+  max-height: 230px;
+}
+/*FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF*/
+.form-inscripcion{
+  padding: 15px;
+  background-color: #64a8d7;
+}
+.font-salud-visual{
+  color: #2188ca;
+}
+.font-salud-hombre{
+  color: #ebad0c;
+}
+.font-salud-mujer{
+  color: #a81f6f;
+}
+.font-salud-ninos{
+  color: #6bb230;
+}
+.font-salud-visual{
+  color: #2188ca;
+}
+.font-salud-dental{
+  color: #58bfc8;
+}
+.font-biorreguladora{
+  color: #e08441;
+}
+.font-salud-hombres{
+  color: #ebad0c;
+}
+.f-post{
+  width: 100%;
+  min-height: 460px;
+  max-height: 460px;
+}
+/*GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG*/
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+.hr-salud-visual{
+  border-color: #2188ca;
+}
+.hr-salud-hombre{
+  border-color: #ebad0c;
+}
+.hr-salud-mujer{
+  border-color: #a81f6f;
+}
+.hr-salud-ninos{
+  border-color: #6bb230;
+}
+.hr-salud-visual{
+  border-color: #2188ca;
+}
+.hr-salud-dental{
+  border-color: #58bfc8;
+}
+.hr-biorreguladora{
+  border-color: #e08441;
+}
+/*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
+.img-noticias{
+  height: auto!important;
+}
+.internal-menu{
+  font-size: 25px!important;
+}
+.internal-menu:focus{
+  background-color: transparent!important;
+  border: 0px!important;
+}
+/*JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ*/
+.jumbotron{
+  padding: 45px 45px!Important;
+  background-color: #f1f4f9;
+  border-radius: 0px!Important;
+}
+/*KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK*/
+/*LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL*/
+.lo-mas-leido{
+  font-size: 22px;
+  font-weight: bold;
+}
+/*MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
+.menu-first{
+  border-radius: 0px;
+  margin-bottom: 0px;
+  padding: 10px 100px;
+}
+          .menu-first ul>li>a{
+            font-size: 35px;
+            padding:15px 40px;
+          }
+          .menu-first a , .navbar-form > .btn{
+            color: white;
+            border-left: 1px solid white;
+          }
+.menu-second{
+  background-color: #f1f4f9;
+  margin-bottom: 0px;
+  padding: 5px 0;
+}
+          .menu-second a{
+            color: #2188ca;
+            font-size: 30px;
+          }
+          .menu-second .navbar-right{
+            margin-top: 0px;
+          }
+.menu-third{
+  font-family: "Bariol";
+  background-color: white;
+  -webkit-box-shadow: 0px 5px 18px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 18px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 18px 0px rgba(0,0,0,0.75);
+}
+          .menu-third>li>a{
+            border-radius: 0px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 5px 15px;
+          }
+.menu{
+  margin-top: 20px;
+  font-size: 16px;
+}
+                .menu>li>a{
+                  color: black;
+                }
+ .my-fila{
+   margin: 0px;
+ }
+ .menu-social-media>li>a{
+   padding: 10px!important;
+   margin-top: 10px;
+   border-left: 0px;
+ }
+ .marginTop80{
+   margin-top: 80px;
+ }
+ /*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+ .nav>li>a:focus, .nav>li>a:hover{
+   background-color:#d5ebff;
+   color: #2188ca;
+ }
+/*ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ*/
+/*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/
+.padding-sombra{
+  padding-bottom: 15px;
+}
+.pic-post{
+  margin-top: 40px;
+}
+.parrafo-post{
+  text-align:justify;
+  margin-top:30px;
+}
+/*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
+/*RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR*/
+.row-comentario{
+  margin-top: 40px;
+}
+/*SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+.sin-padding{
+  padding: 0px!important;
+}
+.share-lbl{
+  font-size: 19px;
+}
+.sombra{
+  position: absolute;
+  z-index: 2;
+}
+/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
+.theme-salud-visual{
+  background-color: #2188ca;
+}
+.theme-salud-hombre{
+  background-color: #ebad0c;
+}
+.theme-salud-mujer{
+  background-color: #a81f6f;
+}
+.theme-salud-ninos{
+  background-color: #6bb230;
+}
+.theme-salud-visual{
+  background-color: #2188ca;
+}
+.theme-salud-dental{
+  background-color: #58bfc8;
+}
+.theme-biorreguladora{
+  background-color: #e08441;
+}
+.thumbnail{
+  border: none;
+  padding:10px;
+  text-align: justify;
+  overflow: hidden;
+}
+        .thumbnail:hover{
+          background-color: #f5f5f5;
+          transition: 0.5s;
+        }
+        .thumbnail h3{
+          font-size: 25px;
+          font-weight: bold;
+        }
+        .thumbnail .col-xs-4 img, .ads .col-xs-5 img{
+          height: 100px;
+        }
+        .thumbnail i{
+          padding: 5px;
+        }
+        .thumbnail .caption-mini{
+          height: 100px;
+        }
+        .thumbnail .caption-mini h4{
+          margin-top: 0px;
+          font-weight: bold;
+          font-size: 20px;
+        }
+        .thumbnail .caption-mini p{
+          font-size: 12px;
+          line-height: 15px;
+          height: 30px;
+          overflow: hidden;
+        }
+        .thumbnail .caption-md h5{
+          font-family: "Bariol";
+          font-size: 18px;
+          font-weight: bold;
+          margin: 0px;
+        }
+        .thumbnail .caption-md h4{
+          font-size: 20px;
+          font-weight: bold;
+        }
+        .thumbnail .caption-md p{
+          font-size: 12px;
+        }
+.txt-browser{
+  border-radius: 10px 0px;
+  font-size: 15px;
+  padding: 6px 15px;
+}
+.te-puede-interesar{
+  font-size:35px;
+  text-align:center;
+  font-weight:bold;
+  font-family:'Bariol';
+}
+/*UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU*/
+.ul-contact{
+  padding: 10px 0px;
+}
+.ul-logo{
+  padding-left: 90px;
+}
+.ul-social{
+  padding-right: 110px;
+}
+.ul-social>li{
+  margin-left:  15px;
+}
+.ul-ingresa>li{
+  display: inline-block;
+}
+/*VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV*/
+/*WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW*/
+/*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+/*YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY*/
+/*ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ*/

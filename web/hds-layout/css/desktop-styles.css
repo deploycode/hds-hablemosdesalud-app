@@ -1,0 +1,74 @@
+/*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
+#iconos p{
+  font-size: 13px;
+}
+/*LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL*/
+#logos h4{
+  font-size: 25px;
+  margin-bottom: 0px;
+}
+#logos{
+  font-size: 12px;
+  text-align:justify;
+  padding-bottom: 30px;
+}
+/*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+.aside{
+  padding-left: 30px;
+}
+.aside .jumbotron{
+  padding: 20px!important;
+}
+/*CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC*/
+.caption-aside h6{
+  margin-top: 0px;
+}
+.caption-aside h5{
+  margin-bottom: 0px;
+}
+.caption-xs{
+  padding: 0px 50px;
+}
+.caption-xs h3{
+  font-size: 20px;
+}
+.caption-xs p{
+  font-size: 15px;
+}
+.caption-mini h4{
+  font-size: 16px!important;
+}
+/*LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL*/
+.logo-hablemos{
+  width: 50%;
+}
+/*MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
+.menu-salud-visual>li>a{
+  font-size: 13px;
+}
+.menu-first{
+  padding: 0px 50px;
+}
+.menu-first ul>li>a {
+    font-size: 22px;
+    padding: 12px 40px;
+}
+.menu-third>li>a{
+    font-size: 22px;
+}
+/*TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
+.thumbnail .caption-mini {
+    height: 90px;
+}
+/*UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU*/
+.ul-logo{
+  padding-left: 40px;
+}
+.ul-social{
+  padding-right: 60px;
+  margin-top: 30px!important;
+}
+/*SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+.salud>li>a{
+  font-size: 20px;
+}

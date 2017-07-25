@@ -1,0 +1,63 @@
+.sombra{
+  position: inherit;
+}
+.icons{
+  border-right: 0px;
+}
+#logos{
+  padding: 30px;
+}
+.logo-hablemos{
+  margin: auto;
+}
+.menu-first{
+  padding: 10px!important;
+}
+.menu-first a{
+  border: 0px;
+}
+.navbar-toggle{
+  border: 1px solid white;
+  background-color: white;
+}
+.icon-bar{
+  background-color: #2188ca;
+}
+.navbar-nav>li{
+  text-align: center;
+}
+.navbar-nav>li>a{
+  color: white;
+}
+.content{
+  padding: 10px;
+}
+.marginTop80{
+  margin-top: 10px;
+}
+.carousel-control i{
+  background-color: gray;
+  border-radius: 25px;
+  margin-left: -1px!important;
+  margin-right: -1px!important;
+  width: 50px!important;
+  height: 50px!important;
+  margin-top: 30px!important;
+  font-size: 50px!important;
+}
+.aside{
+  padding: 15px;
+}
+.img-marcas{
+  margin: auto;
+  padding-bottom: 10px;
+}
+.caption-lg>h3{
+  margin:0px!important;
+}
+.caption-lg{
+  padding: 5px!important;
+}
+.thumbnail .caption-md h5{
+  margin-top: 10px;
+}
