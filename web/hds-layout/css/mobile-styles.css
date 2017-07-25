@@ -59,6 +59,9 @@
 .caption-lg{
   padding: 5px!important;
 }
+.caption-xs{
+  padding: 5px;
+}
 .thumbnail .caption-md h5{
   margin-top: 10px;
 }
