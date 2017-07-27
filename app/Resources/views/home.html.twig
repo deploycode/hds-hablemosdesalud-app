@@ -17,7 +17,7 @@
     <div class="col-xs-12 col-sm-6">
       <!-- c-post -->
       {% for post in collage %}
-        {% if loop.index < 5 %}
+        {% if loop.index < 4 %}
           <div class="card col-xs-12 col-sm-6">
             <a href="/articulos/{{post.slug}}">
               <img src="/uploads/{{post.image}}" class="img img-responsive c-post" />
@@ -155,7 +155,7 @@
                 </div>
               </div>
             </a>
-          {% elseif loop.index < 5 %}
+          {% elseif loop.index < 4 %}
             <!-- c-post -->
             <a href="/articulos/{{post.slug}}">
               <div class="thumbnail">
