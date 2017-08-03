@@ -1,4 +1,4 @@
-Symfony Standard Edition
+hds-hablemosdesalud-app
 ========================
 
 Welcome to the Symfony Standard Edition - a fully-functional Symfony
