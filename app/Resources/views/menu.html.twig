@@ -53,7 +53,7 @@
       <div class="jumbotron">
         <h5 class="lo-mas-leido">Reciente <i class="glyphicon glyphicon-fire pull-right"></i></h5>
         <hr>
-        {% for post in collage if post.menu.slug == menu.slug %}
+        {% for post in collage if post.menu.slug <> menu.slug %}
           {% if loop.index < 7 %}
             <div class="row ads">
               <a href="/articulos/{{post.slug}}">
