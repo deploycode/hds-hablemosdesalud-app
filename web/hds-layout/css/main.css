@@ -222,6 +222,11 @@ a{
   min-height: 230px;
   max-height: 230px;
 }
+.f-post{
+  width: 100%;
+  min-height: 460px;
+  max-height: 460px;
+}
 /*FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF*/
 .form-inscripcion{
   padding: 15px;
