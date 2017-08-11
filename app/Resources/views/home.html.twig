@@ -276,20 +276,21 @@
       <article class="col-xs-12">
         <!-- new -->
         {% for post in collage %}
-        {% if loop.index < 8 %}{% endif %}
-          <a href="articulos/{{post.slug}}">
-            <div class="thumbnail">
-              <div class="col-xs-12 col-md-4">
-                <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive img-noticias">
+          {% if loop.index < 6 %}
+            <a href="articulos/{{post.slug}}">
+              <div class="thumbnail">
+                <div class="col-xs-12 col-md-4">
+                  <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive img-noticias">
+                </div>
+                <div class="col-xs-12 col-md-8 caption-md ">
+                  <h5 class="font-{{post.menu.service.slug}}">{{post.menu.service.name}}</h5>
+                  <h4>{{post.title}}</h4>
+                  <p>{{post.abstract}}</p>
+                  <p class="text-right">{{post.updatedAt|date('Y-m-d')}}</p>
+                </div>
               </div>
-              <div class="col-xs-12 col-md-8 caption-md ">
-                <h5 class="font-{{post.menu.service.slug}}">{{post.menu.service.name}}</h5>
-                <h4>{{post.title}}</h4>
-                <p>{{post.abstract}}</p>
-                <p class="text-right">{{post.updatedAt|date('Y-m-d')}}</p>
-              </div>
-            </div>
-          </a>
+            </a>
+          {% endif %}
         {% endfor %}
       </article>
     </div>
