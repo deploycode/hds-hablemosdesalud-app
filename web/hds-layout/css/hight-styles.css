@@ -1,10 +1,10 @@
 .f-post{
   width: 100%;
-  min-height: 500px;
-  max-height: 500px;
+  min-height: 600px;
+  max-height: 600px;
 }
 .c-post {
     width: 100%;
-    min-height: 250px;
-    max-height: 250px;
+    min-height: 300px;
+    max-height: 300px;
 }
