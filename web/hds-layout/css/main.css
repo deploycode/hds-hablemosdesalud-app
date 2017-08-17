@@ -192,6 +192,7 @@ a{
 }
 .card {
   position: relative;
+  overflow: hidden;
 }
 .caption-aside h6{
   font-size: 14px;
@@ -226,6 +227,13 @@ a{
   width: 100%;
   min-height: 460px;
   max-height: 460px;
+}
+.f-post:hover , .c-post:hover{
+  -webkit-transform:scale(1.2);
+  -moz-transform:scale(1.2);
+  -o-transform:scale(1.2);
+  -ms-transform:scale(1.2);
+  transition: 0.9s;
 }
 /*FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF*/
 .form-inscripcion{
