@@ -92,5 +92,19 @@ class FrontController extends Controller
     $mailer->send($message);
     return $this->redirectToRoute('inicio');
   }
-
+  /**
+  *@Route("/autoComplete", name="autoComplete")
+  */
+  public function autoComplete(Request $request) {
+    $query = $request->get('term','');
+    $allPosts=Post::where('title','LIKE','%'.$query.'%')->get();
+    $data=array();
+    foreach ($allPosts as $post) {
+      $data[]=array('menu'=>$post->firstMenu->slug , 'post'=> $post->slug, 'value'=>$post->title,'id'=>$post->id);
+    }
+    if(count($data))
+      return $data;
+    else
+      return ['value'=>'No se han encontrado resultados','id'=>''];
+  }
 }
