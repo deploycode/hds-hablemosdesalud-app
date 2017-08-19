@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Service;
 use AppBundle\Entity\Menu;
@@ -97,14 +98,21 @@ class FrontController extends Controller
   */
   public function autoComplete(Request $request) {
     $query = $request->get('term','');
-    $allPosts=Post::where('title','LIKE','%'.$query.'%')->get();
+    $repository = $this->getDoctrine()->getRepository('AppBundle:Post');
+    $qry = $repository->createQueryBuilder('p')
+        ->where('p.title = :title')
+        ->setParameter('title',$query)
+        ->orderBy('p.title', 'ASC')
+        ->getQuery();
+    $allPosts = $qry->getResult();
+
     $data=array();
     foreach ($allPosts as $post) {
-      $data[]=array('menu'=>$post->firstMenu->slug , 'post'=> $post->slug, 'value'=>$post->title,'id'=>$post->id);
+      $data[]=array('post'=> $post->getSlug(), 'value'=>$post->getTitle(),'id'=>$post->getId());
     }
     if(count($data))
-      return $data;
+      return new JsonResponse($data);
     else
-      return ['value'=>'No se han encontrado resultados','id'=>''];
+      return new JsonResponse(['value'=>'No se han encontrado resultados','id'=>'']);
   }
 }
