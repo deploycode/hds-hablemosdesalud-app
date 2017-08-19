@@ -50,7 +50,7 @@
 							<li><a href="#contactenos">Contacto</a></li>
 							<li><a href="#" class="btn-suscripcion"  data-toggle="modal" data-target="#myModal">Suscríbase</a></li>
 						</ul>
-						<<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav navbar-right">
 							<form id="form_search" method="GET" class="navbar-form navbar-left" action="" >
 								<button id="btn_search" type="submit" class="btn btn-lg theme-salud-visual"><i class="fa fa-search"></i></button>
 								<div class="form-group buscador">
@@ -219,27 +219,6 @@
 		<script src="{{asset('hds-layout/js/main.js')}}"></script>
 		<script src="{{asset('hds-layout/js/carousel.js')}}"></script>
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				src = "../autoComplete";
-				$("#search").autocomplete({
-					source: function(request, response) {
-							$.ajax({
-								 url: src,
-								 dataType: "json",
-								 data: {term : request.term},
-								 success: function(data){
-										 response(data);
-								 }
-							});
-					 }, min_length: 3,
-					 select: function( event, ui ) {
-							$('#search').val(ui.item.value);
-							location.href='/articulos/'+ui.item.post;
-							return false;
-					}
-				});
-			});
-		</script>
+		<script src="{{asset('hds-layout/js/autocomplete.js')}}"></script>
 	</body>
 </html>
