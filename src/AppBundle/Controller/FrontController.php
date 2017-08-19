@@ -98,14 +98,10 @@ class FrontController extends Controller
   */
   public function autoComplete(Request $request) {
     $query = $request->get('term','');
-    $repository = $this->getDoctrine()->getRepository('AppBundle:Post');
-    $qry = $repository->createQueryBuilder('p')
-        ->where('p.title = :title')
-        ->setParameter('title',$query)
-        ->orderBy('p.title', 'ASC')
-        ->getQuery();
-    $allPosts = $qry->getResult();
-
+    $em = $this->getDoctrine()->getManager();
+    $sql = $em->createQuery("SELECT p FROM AppBundle\Entity\Post p WHERE p.title LIKE :query ");
+    $sql->setParameter('query', '%'.$query.'%');
+    $allPosts = $sql->getResult();
     $data=array();
     foreach ($allPosts as $post) {
       $data[]=array('post'=> $post->getSlug(), 'value'=>$post->getTitle(),'id'=>$post->getId());
