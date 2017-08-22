@@ -33,6 +33,7 @@
       <!-- fecha -->
       <div class="col-xs-12">
         <p id="fecha-publicacion">{{post.updatedAt|date('Y-m-d')}}</p>
+        <div class="sharethis-inline-share-buttons"></div>
       </div>
       <!-- barra -->
       <div class="col-xs-12 sin-padding">
@@ -40,6 +41,7 @@
       </div>
       <!-- contenido del post -->
       <div class="col-xs-12 sin-padding" id="p-post">
+
         <p class="parrafo-post">
           {{post.content|raw}}
         </p>
