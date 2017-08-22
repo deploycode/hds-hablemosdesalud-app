@@ -20,7 +20,7 @@ class FrontController extends Controller
     $em = $this->getDoctrine()->getManager();
     $services = $em->getRepository('AppBundle:Service')->findAll();
     //El post con el id 1
-    $f_post = $em->getRepository('AppBundle:Post')->findOneById(3);
+    $f_post = $em->getRepository('AppBundle:Post')->findOneByIsFavorite(1);
     //todos los posts
     $query = $em->getRepository('AppBundle:Post')->createQueryBuilder('p')
     ->orderBy('p.updatedAt', 'DESC')
