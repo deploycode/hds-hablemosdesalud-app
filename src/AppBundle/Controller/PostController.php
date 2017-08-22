@@ -169,4 +169,21 @@ class PostController extends Controller
             ->getForm()
         ;
     }
+    /**
+     * Displays a form to edit an existing post entity.
+     *
+     * @Route("/{id}/upgrade", name="post_upgrade")
+     * @Method({"GET", "POST"})
+     */
+    public function upgrade($id){
+      $em = $this->getDoctrine()->getManager();
+      $old_f_post = $em->getRepository('AppBundle:Post')->findOneByIsFavorite(1);
+      $old_f_post->setIsFavorite(0);
+
+      $new_f_post= $em->getRepository('AppBundle:Post')->findOneById($id);
+      $new_f_post->setIsFavorite(1);
+
+      $this->getDoctrine()->getManager()->flush();
+      return $this->redirectToRoute('post_index');
+    }
 }
