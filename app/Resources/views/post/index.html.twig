@@ -1,6 +1,13 @@
 {% extends 'layouts/dashboard.html.twig' %}
 {% block title %}Posts list{% endblock %}
 {% block body %}
+    <ul class="nav navbar-nav navbar-left">
+      <form id="form_search" method="GET" class="navbar-form navbar-left" action="" >
+        <div class="form-group buscador">
+          <input id='search' name='title' aria-describedby='search' type="text" class="form-control" placeholder="Buscar" size="40" required>
+        </div>
+      </form>
+    </ul>
     <div class="form-group text-right">
         <a href="{{ path('post_new') }}" class="btn btn-success">Create a new post</a>
     </div>
