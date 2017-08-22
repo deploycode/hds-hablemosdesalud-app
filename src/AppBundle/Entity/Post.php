@@ -77,6 +77,13 @@ class Post
     private $isActive;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_favorite", type="boolean")
+     */
+    private $isFavorite;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -355,5 +362,29 @@ class Post
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set isFavorite
+     *
+     * @param boolean $isFavorite
+     *
+     * @return Post
+     */
+    public function setIsFavorite($isFavorite)
+    {
+        $this->isFavorite = $isFavorite;
+
+        return $this;
+    }
+
+    /**
+     * Get isFavorite
+     *
+     * @return boolean
+     */
+    public function getIsFavorite()
+    {
+        return $this->isFavorite;
     }
 }

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="posts")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Post
 {
@@ -76,6 +77,13 @@ class Post
     private $isActive;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_favorite", type="boolean")
+     */
+    private $isFavorite;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -89,6 +97,22 @@ class Post
      */
     private $updatedAt;
 
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtValue()
+    {
+      $this->createdAt=new \DateTime();
+    }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function setUpdatedAtValue()
+    {
+      $this->updatedAt=new \DateTime();
+    }
 
     /**
      * Get id
@@ -290,5 +314,53 @@ class Post
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set menu
+     *
+     * @param \AppBundle\Entity\Menu $menu
+     *
+     * @return Post
+     */
+    public function setMenu(\AppBundle\Entity\Menu $menu = null)
+    {
+        $this->menu = $menu;
+
+        return $this;
+    }
+
+    /**
+     * Get menu
+     *
+     * @return \AppBundle\Entity\Menu
+     */
+    public function getMenu()
+    {
+        return $this->menu;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Post
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
