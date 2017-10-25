@@ -1,0 +1,6 @@
+[18-Aug-2017 16:41:42 Etc/GMT] PHP Fatal error:  Uncaught Symfony\Component\Config\Exception\FileLocatorFileNotFoundException: The file "/home/hablekhw/hds-hablemosdesalud-app/app/config/config_pord.yml" does not exist. in /home/hablekhw/hds-hablemosdesalud-app/vendor/symfony/symfony/src/Symfony/Component/Config/FileLocator.php:46
+Stack trace:
+#0 /home/hablekhw/hds-hablemosdesalud-app/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Config/FileLocator.php(54): Symfony\Component\Config\FileLocator->locate('/home/hablekhw/...', NULL, true)
+#1 /home/hablekhw/hds-hablemosdesalud-app/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Loader/YamlFileLoader.php(107): Symfony\Component\HttpKernel\Config\FileLocator->locate('/home/hablekhw/...')
+#2 /home/hablekhw/hds-hablemosdesalud-app/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/DelegatingLoader.php(45): Symfony\Component\DependencyInjection\Loader\YamlFileLoader->load('/home/hablekhw/...', NULL)
+#3 /home/hablekhw/hds-hablemosdesalud-app/app/AppKernel.php(52): Symfony\Component\C in /home/hablekhw/hds-hablemosdesalud-app/vendor/symfony/symfony/src/Symfony/Component/Config/FileLocator.php on line 46
