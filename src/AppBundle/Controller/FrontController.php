@@ -88,8 +88,13 @@ class FrontController extends Controller
                       )
             ),
             'text/html'
-        )
-    ;
+        );
+
+    $this->addFlash(
+      'notice',
+      ', hemos recibido sus datos, en breve le contactaremos'
+    );
+
     $mailer->send($message);
     return $this->redirectToRoute('inicio');
   }
