@@ -94,8 +94,9 @@ class FrontController extends Controller
       'notice',
       ', hemos recibido sus datos, en breve le contactaremos'
     );
-
-    $mailer->send($message);
+    if ($request->$request->get('email')) {
+        $mailer->send($message);
+    }
     return $this->redirectToRoute('inicio');
   }
   /**
