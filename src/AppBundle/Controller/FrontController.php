@@ -94,10 +94,10 @@ class FrontController extends Controller
       'notice',
       ', hemos recibido sus datos, en breve le contactaremos'
     );
-    if ($request->$request->get('email')) {
+    if ($request->get('email')) {
         $mailer->send($message);
-    }
-    return $this->redirectToRoute('inicio');
+        return $this->redirectToRoute('inicio');
+    };
   }
   /**
   *@Route("/autoComplete", name="autoComplete")
