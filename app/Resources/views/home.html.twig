@@ -142,7 +142,7 @@
         <!-- barra -->
         <hr class="hr-biorreguladora">
         <!-- collage -->
-        {% for post in collage if post.menu.service.slug == 'biorreguladroa' %}
+        {% for post in collage if post.menu.service.slug == 'biorreguladora' %}
           {% if loop.first %}
             <!-- f-post -->
             <a href="/articulos/{{post.slug}}">
@@ -163,7 +163,7 @@
                   <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive">
                 </div>
                 <div class="col-xs-7 caption-mini ">
-                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <h4 class="font-{{post.menu.service.slug}}">{{post.title}}</h4>
                   <p>{{post.abstract}}</p>
                 </div>
               </div>
@@ -198,7 +198,7 @@
                   <img src="{{asset('uploads/')}}{{post.image}}" alt="{{post.title}}" class="img img-responsive">
                 </div>
                 <div class="col-xs-7 caption-mini ">
-                  <h3 class="font-{{post.menu.service.slug}}">{{post.title}}</h3>
+                  <h4 class="font-{{post.menu.service.slug}}">{{post.title}}</h4>
                   <p>{{post.abstract}}</p>
                 </div>
               </div>
