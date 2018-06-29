@@ -6,7 +6,16 @@
     </div>
     {{ form_start(edit_form , { 'enctype':"multipart/form-data"} ) }}
     <div class="form-group">
-      {{ form_widget(edit_form) }}
+        {{ form_row(edit_form.menu) }}
+        {{ form_row(edit_form.title) }}
+        {% if is_granted('ROLE_ADMIN' , 'ROLE_ILUSTRATOR') %}
+            {{ form_row(edit_form.image) }}
+        {% else %}
+            {{ form_row(edit_form.image , { 'attr':{'disabled':'disabled'}}) }}
+        {% endif %}
+        {{ form_row(edit_form.abstract) }}
+        {{ form_row(edit_form.content) }}
+        {{ form_row(edit_form.isActive) }}
     </div>
     <div class="form-group text-right">
       <input type="submit" value="Edit" class="btn btn-success"/>
